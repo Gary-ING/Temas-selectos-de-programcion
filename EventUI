@@ -1,0 +1,41 @@
+using NUnit.Framework;
+using UnityEngine;
+using System.Collections.Generic;
+using System.Collections;
+using TMPro;
+
+public class EventUI : MonoBehaviour
+{
+    public List<GameObject> objects;//Lista de objetos
+    public List<string> messages;//Lista de mensajes
+    public int currentIndex = 0;
+    public TextMeshProUGUI textMeshPro;
+
+
+    
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    void Start()
+    {
+        
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        
+    }
+    //Creacion de los metodos
+    //Metodo para el ciclo de los objetos
+    public void CycleObjects() {
+        //Incrementar el indice y vuelve al principio si es necesario
+        currentIndex = (currentIndex + 1) % objects.Count;
+        //Actualiar la visibilidad de los objetos
+        UpdateObjectVisibility();
+    }
+
+    private void UpdateObjectVisibility() {
+        for (int i = 0; i < objects.Count; i++) {
+            objects[i].SetActive(i == currentIndex);//Recorrera todo los elementos de la lista
+        }
+    }
+}
